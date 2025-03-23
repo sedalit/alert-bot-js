@@ -1,0 +1,2 @@
+BOT_TOKEN="Bot token from BotFather"
+ANSWERS_FILE="/dicts/answers.yaml"
