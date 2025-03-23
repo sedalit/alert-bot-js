@@ -14,11 +14,17 @@ var responses = new function() {
         this.language = language;
     }
 
-    this.getResponse = function (id) {
+    this.getResponse = function (id, variablesObject = {}) { 
         let response = this.responses[this.language][id];
 
         if (typeof response === 'object') {
-            return response[Math.floor(Math.random() * response.length)];
+            response = response[Math.floor(Math.random() * response.length)];
+        }
+
+        if (response) {
+            for (let variable in variablesObject) {
+                response = response.replace(`{{${variable}}}`, variablesObject[variable]);
+            }
         }
         
         return response;
